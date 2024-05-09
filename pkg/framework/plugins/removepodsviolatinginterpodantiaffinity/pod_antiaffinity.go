@@ -90,7 +90,7 @@ func (d *RemovePodsViolatingInterPodAntiAffinity) Deschedule(ctx context.Context
 
 loop:
 	for _, node := range nodes {
-		klog.V(2).InfoS("Processing node", "node", klog.KObj(node))
+		klog.V(2).InfoS("Processing node", "node", klog.KObj(node), "plugin", PluginName)
 		pods := podsOnANode[node.Name]
 		// sort the evict-able Pods based on priority, if there are multiple pods with same priority, they are sorted based on QoS tiers.
 		podutil.SortPodsBasedOnPriorityLowToHigh(pods)

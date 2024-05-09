@@ -118,7 +118,7 @@ func (d *RemovePodsViolatingNodeAffinity) Deschedule(ctx context.Context, nodes 
 
 func (d *RemovePodsViolatingNodeAffinity) processNodes(ctx context.Context, nodes []*v1.Node, filterFunc func(*v1.Pod, *v1.Node, []*v1.Node) bool) *frameworktypes.Status {
 	for _, node := range nodes {
-		klog.V(2).InfoS("Processing node", "node", klog.KObj(node))
+		klog.V(2).InfoS("Processing node", "node", klog.KObj(node), "plugin", PluginName)
 
 		// Potentially evictable pods
 		pods, err := podutil.ListPodsOnANode(
